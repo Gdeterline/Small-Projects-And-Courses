@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generate_racetrack(track_width=20, radius=100, num_segments=8, save_path="../tracks/racetrack_test.png"):
+def generate_track(track_width=20, radius=100, num_segments=8, save_path="../tracks/track_test.png"):
     # Generate angles for segments
     angles = np.linspace(0, 2 * np.pi, num_segments + 1)
 
@@ -20,4 +20,4 @@ def generate_racetrack(track_width=20, radius=100, num_segments=8, save_path="..
     ax.plot(outer_x, outer_y)
     plt.savefig(save_path)
 
-generate_racetrack()
+generate_track()

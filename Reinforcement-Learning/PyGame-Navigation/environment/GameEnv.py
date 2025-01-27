@@ -14,17 +14,19 @@ clock = pygame.time.Clock()
 class GameEnv():
     def __init__(self):
         pygame.init()
-        self.obj = InteractiveObject()
+        self.obj = InteractiveObject(500, 500)
         self.screen = pygame.display.set_mode((HEIGHT, WIDTH))
 
 
     def run_env(self):
-
+        
         running = True
         while running:
             # Set FPS
-            clock.tick(1)
+            clock.tick(60)
 
+            self.obj.accelerate()   # To replace by Action
+            self.obj.update()       # Update car position
 
             self.screen.fill((0, 0, 0))
             # Draw the player on the screen
