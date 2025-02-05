@@ -69,9 +69,9 @@ A **decorator** is just a function that takes another function as input and retu
 ```python
 def my_decorator(func):
     def wrapper():
-    print("Something before the function runs.")
-    func()
-    print("Something after the function runs.")
+        print("Something before the function runs.")
+        func()
+        print("Something after the function runs.")
     return wrapper
 
 @my_decorator
