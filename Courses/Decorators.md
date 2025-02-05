@@ -195,6 +195,8 @@ say_hello()
 say_hello()
 ```
 
+**Nota Bene:** It is necessary to name your function `__call__` for the object to be callable.  
+
 ### **Exercise 8: Create a Class-Based Decorator** 
 Create a class `Timer` that measures and prints the execution time of a function.
 
