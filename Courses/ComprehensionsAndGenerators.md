@@ -165,3 +165,5 @@ print(next(counter)) # Output: 1
 
 ### **Exercise 10: Infinite Even Numbers** 
 Write an infinite generator that yields even numbers starting from 0.
+
+---
