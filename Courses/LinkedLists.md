@@ -52,16 +52,7 @@ class LinkedList:
 
 ### 3.1 Traversal
 
-To go through all elements:
-
-```python
-def print_list(self):
-    current = self.head
-    while current:
-        print(current.data, end=" -> ")
-        current = current.next
-    print("None")
-```
+To go through all elements, we start from the head and follow `next` pointers. This is called **traversal**.
 
 ---
 
@@ -69,47 +60,23 @@ def print_list(self):
 
 * **At the beginning**
 
-```python
-def insert_at_beginning(self, data):
-    new_node = Node(data)
-    new_node.next = self.head
-    self.head = new_node
-```
+To insert at the start, create a new node and point its `next` to the current head. Update head to this new node.
+
 
 * **At the end**
 
-```python
-def insert_at_end(self, data):
-    new_node = Node(data)
-    if not self.head:
-        self.head = new_node
-        return
-    current = self.head
-    while current.next:
-        current = current.next
-    current.next = new_node
-```
+To insert at the end, traverse to the last node and set its `next` to the new node. To handle an empty list, check if head is `None`.
+To identify the last node, check if `next` is `None`.
 
 ---
 
 ### 3.3 Delete by Value
 
-```python
-def delete_by_value(self, key):
-    current = self.head
+To delete a node by value, traverse the list while keeping track of the previous node. If the node with the target value is found, update the previous node's `next` to skip the current node.
 
-    if current and current.data == key:
-        self.head = current.next
-        return
+### 3.4 Delete by Position
 
-    prev = None
-    while current and current.data != key:
-        prev = current
-        current = current.next
-
-    if current:
-        prev.next = current.next
-```
+To delete a node by position (0-based index), traverse the list to the node just before the target position. Update its `next` to skip the target node.
 
 ---
 
