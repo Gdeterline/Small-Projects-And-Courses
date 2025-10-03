@@ -12,7 +12,16 @@
   * `data`: the actual value.
   * `next`: a reference to the next node.
 
-In Python, we implement nodes with **classes**.
+Example diagram of a singly linked list:
+
+```
+[Head] -> [Data|Next] -> [Data|Next] -> [Data|Next] -> None
+```
+
+In Python, we implement nodes with **classes**, and use `None` to signify the end of the list.
+* The first node is called the **head**.
+* The last node points to `None`, indicating the end of the list. It is called the **tail**.
+* Linked lists can be **singly linked** (one direction) or **doubly linked** (two directions), or even **circular** (last node points back to head).
 
 ---
 
@@ -31,6 +40,8 @@ In Python, we implement nodes with **classes**.
 
 ### 2.1 Node Class
 
+A simple node class with `data` and `next` pointer. The `next` is initialized to `None`.
+
 ```python
 class Node:
     def __init__(self, data):
@@ -39,6 +50,8 @@ class Node:
 ```
 
 ### 2.2 LinkedList Class
+
+The linked list class manages the head of the list. It provides methods for common operations like insertion, deletion, and traversal.
 
 ```python
 class LinkedList:
@@ -98,41 +111,18 @@ To delete a node by position (0-based index), traverse the list to the node just
 
 ## 4. Doubly Linked List
 
+A doubly linked is a linked list where each node has two pointers: one to the next node and one to the previous node.
+This allows traversal in both directions.
+It can be particularly useful for certain applications like navigation systems, undo functionality in applications, and more.
+
 ### 4.1 Node
 
-```python
-class DNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
-```
+The node structure for a doubly linked list includes `data`, `next`, and `prev` pointers.
 
 ### 4.2 Append and Prepend
 
-```python
-class DoublyLinkedList:
-    def __init__(self):
-        self.head = None
-
-    def append(self, data):
-        new_node = DNode(data)
-        if not self.head:
-            self.head = new_node
-            return
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = new_node
-        new_node.prev = current
-
-    def prepend(self, data):
-        new_node = DNode(data)
-        new_node.next = self.head
-        if self.head:
-            self.head.prev = new_node
-        self.head = new_node
-```
+To append, create a new node, set its `prev` to the current tail, and update the tail's `next` to this new node.
+To prepend, create a new node, set its `next` to the current head, and update the head's `prev` to this new node.
 
 ---
 
@@ -153,28 +143,12 @@ class DoublyLinkedList:
 
 ### 5.1 Node + Circular List
 
-```python
-class CNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+A circular linked list is a linked list where the last node points back to the head, forming a circle.
+In a circular linked list, there is no `None` at the end; instead, the last node's `next` points to the head node.
 
-class CircularLinkedList:
-    def __init__(self):
-        self.head = None
+### 5.2 Traversal
 
-    def append(self, data):
-        new_node = CNode(data)
-        if not self.head:
-            self.head = new_node
-            new_node.next = new_node
-            return
-        current = self.head
-        while current.next != self.head:
-            current = current.next
-        current.next = new_node
-        new_node.next = self.head
-```
+To traverse a circular linked list, start from the head and continue until you reach the head again. Use a `do-while` style loop to ensure the head is processed.
 
 ---
 
